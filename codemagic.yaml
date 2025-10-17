@@ -1,12 +1,12 @@
 workflows:
   android_debug_apk:
     name: Android Debug APK
-    instance_type: linux   # ✅ mesin percuma
+    instance_type: linux     # ✅ mesin percuma
     environment:
       java: openjdk17
       node: 20
     scripts:
-      - name: Install deps
+      - name: Install dependencies
         script: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
       - name: Build Debug APK
