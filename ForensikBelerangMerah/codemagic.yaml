@@ -1,18 +1,19 @@
 workflows:
   android_debug_apk:
       name: Android Debug APK
-          instance_type: linux_x2
+          instance_type: linux        # free tier
               environment:
                     java: openjdk17
                           node: 20
                               scripts:
                                     - name: Install deps
                                             script: |
-                                                      if [ -f package-lock.json ]; then npm ci; else npm install; fi
-                                                            - name: Build Debug APK
-                                                                    script: |
-                                                                              cd android
-                                                                                        chmod +x gradlew
-                                                                                                  ./gradlew :app:assembleDebug --no-daemon
-                                                                                                      artifacts:
-                                                                                                            - android/app/build/outputs/apk/debug/*.apk
+                                                      cd ForensikBelerangMerah
+                                                                if [ -f package-lock.json ]; then npm ci; else npm install; fi
+                                                                      - name: Build Debug APK
+                                                                              script: |
+                                                                                        cd ForensikBelerangMerah/android
+                                                                                                  chmod +x gradlew
+                                                                                                            ./gradlew :app:assembleDebug --no-daemon
+                                                                                                                artifacts:
+                                                                                                                      - ForensikBelerangMerah/android/app/build/outputs/apk/debug/*.apk
