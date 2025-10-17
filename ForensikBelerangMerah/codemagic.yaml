@@ -1,18 +1,18 @@
 workflows:
   android_debug_apk:
-    name: Android Debug APK
-    instance_type: linux_x2          # ✅ Paksa Linux (bukan macOS/Xcode)
-    environment:
-      java: openjdk17                # ✅ Tiada ${...}
-      node: 20
-    scripts:
-      - name: Install dependencies
-        script: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-      - name: Build Debug APK
-        script: |
-          cd android
-          chmod +x gradlew
-          ./gradlew :app:assembleDebug --no-daemon
-    artifacts:
-      - android/app/build/outputs/apk/debug/*.apk
+      name: Android Debug APK
+          instance_type: linux_x2
+              environment:
+                    java: openjdk17
+                          node: 20
+                              scripts:
+                                    - name: Install deps
+                                            script: |
+                                                      if [ -f package-lock.json ]; then npm ci; else npm install; fi
+                                                            - name: Build Debug APK
+                                                                    script: |
+                                                                              cd android
+                                                                                        chmod +x gradlew
+                                                                                                  ./gradlew :app:assembleDebug --no-daemon
+                                                                                                      artifacts:
+                                                                                                            - android/app/build/outputs/apk/debug/*.apk
