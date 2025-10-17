@@ -1,7 +1,7 @@
 workflows:
   android_debug_apk:
     name: Android Debug APK
-    instance_type: linux_x2
+    instance_type: linux   # ✅ mesin percuma
     environment:
       java: openjdk17
       node: 20
